@@ -1,7 +1,6 @@
 .my-banner {
-    -fx-background-color: lightgreen;
-    -fx-text-fill: black;
     -fx-focus-color: transparent;
+    -fx-color-label-visible: white;
 }
 
 .my-banner:scale_65 {
@@ -39,18 +38,48 @@
     -fx-scale-y: 2;
 }
 
-.check-box .box {
+.my-banner:theme_contrast {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.my-banner:theme_contrast .label{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.my-banner:theme_default {
+    -fx-background-color: lightgreen;
+    -fx-text-fill: black;
+}
+
+.check-box:theme_default .box {
     -fx-background-color: lightgreen;
     -fx-border-color: white;
     -fx-border-radius: 3px;
 }
 
-.check-box:selected .mark {
+.check-box:theme_default .mark {
     -fx-background-color: white;
 }
 
-.check-box:selected .box {
+.check-box:theme_default .box {
     -fx-background-color: lightgreen;
+}
+
+.check-box:theme_contrast .box {
+    -fx-background-color: black;
+    -fx-border-color: white;
+    -fx-border-radius: 3px;
+}
+
+.check-box:theme_contrast .mark {
+    -fx-background-color: white;
+}
+
+.check-box:theme_contrast .box {
+    -fx-background-color: black;
 }
 
 #infoIcon {

@@ -1,6 +1,8 @@
 package com.jankotek.fx.customcontrols.mybanner;
 
-import javafx.beans.property.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 
@@ -16,14 +18,6 @@ public class MyBanner extends Control implements MyBannerApi {
         this.setScaleType(ScaleType.SCALE_100);
         this.setIsInfoMessage(true);
         this.setIsContrastScheme(true);
-
-        getStyleClass().add("my-banner");
-        setFocusTraversable(true);
-    }
-
-    public MyBanner(String text) {
-        this();
-        this.setMessage(text);
     }
 
     /* API */
