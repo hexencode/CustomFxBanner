@@ -27,7 +27,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>${javafx.maven.plugin.version}</version>
                 <configuration>
-                    <mainClass>eu.hansolo.fx.customcontrols.regionbased.DemoRegionBased</mainClass>
+                    <mainClass>com.jankotek.fx.customcontrols.regionbased.DemoRegionBased</mainClass>
                 </configuration>
             </plugin>
             <plugin>
