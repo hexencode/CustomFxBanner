@@ -1,0 +1,69 @@
+.my-banner {
+    -fx-background-color: lightgreen;
+    -fx-text-fill: black;
+    -fx-focus-color: transparent;
+}
+
+.my-banner:scale_65 {
+    -fx-scale-x: .65;
+    -fx-scale-y: .65;
+}
+
+.my-banner:scale_85 {
+    -fx-scale-x: .85;
+    -fx-scale-y: .85;
+}
+
+.my-banner:scale_100 {
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+.my-banner:scale_125 {
+    -fx-scale-x: 1.25;
+    -fx-scale-y: 1.25;
+}
+
+.my-banner:scale_150 {
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
+}
+
+.my-banner:scale_175 {
+    -fx-scale-x: 1.75;
+    -fx-scale-y: 1.75;
+}
+
+.my-banner:scale_200 {
+    -fx-scale-x: 2;
+    -fx-scale-y: 2;
+}
+
+.check-box .box {
+    -fx-background-color: lightgreen;
+    -fx-border-color: white;
+    -fx-border-radius: 3px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.check-box:selected .box {
+    -fx-background-color: lightgreen;
+}
+
+#infoIcon {
+    -fx-image: url(../img/information.png);
+    -fx-alignment: left;
+}
+
+#confirmIcon {
+    -fx-image: url(../img/check-bold.png);
+    -fx-alignment: left;
+}
+
+#exitIcon {
+    -fx-image: url(../img/close-thick.png);
+    -fx-alignment: right;
+}
