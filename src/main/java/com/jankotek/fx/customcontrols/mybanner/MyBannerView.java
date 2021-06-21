@@ -67,11 +67,11 @@ final class MyBannerView {
 
         public static ImageView create(IconType iconType) {
             ImageView icon = new ImageView();
-            icon.setId(switch (iconType) {
-                case INFO -> "infoIcon";
-                case EXIT -> "exitIcon";
-                case CONFIRM -> "confirmIcon";
-            });
+            String cssId =
+                    iconType == IconType.INFO ? "infoIcon" :
+                            iconType == IconType.EXIT ? "exitIcon"
+                                    : iconType == IconType.CONFIRM ? "confirmIcon" : "";
+            icon.setId(cssId);
             return icon;
         }
 
