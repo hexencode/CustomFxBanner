@@ -29,87 +29,87 @@ public class MyBanner extends Control implements MyBannerApi {
     /* API */
     @Override
     public StringProperty messageStringProperty() {
-        return model.labelStringProperty;
+        return model.labelStringProperty();
     }
 
     @Override
     public ObjectProperty<ScaleType> scaleTypeProperty() {
-        return model.scaleTypeProperty;
+        return model.scaleTypeProperty();
     }
 
     @Override
     public boolean isInfoType() {
-        return model.isInformationTypeBooleanProperty.get();
+        return model.isInformationTypeBooleanProperty().get();
     }
 
     @Override
     public void isInfoMessage(boolean isInfoType) {
-        model.isInformationTypeBooleanProperty.set(isInfoType);
+        model.isInformationTypeBooleanProperty().set(isInfoType);
     }
 
     @Override
     public BooleanProperty isInfoTypeBooleanProperty() {
-        return model.isInformationTypeBooleanProperty;
+        return model.isInformationTypeBooleanProperty();
     }
 
     @Override
     public boolean isContrastTheme() {
-        return model.isContrastThemeBooleanProperty.get();
+        return model.isContrastThemeBooleanProperty().get();
     }
 
     @Override
     public void isContrastTheme(Boolean isContrastTheme) {
-        model.isContrastThemeBooleanProperty.set(isContrastTheme);
+        model.isContrastThemeBooleanProperty().set(isContrastTheme);
     }
 
     @Override
     public BooleanProperty isContrastThemeBooleanProperty() {
-        return model.isContrastThemeBooleanProperty;
+        return model.isContrastThemeBooleanProperty();
     }
 
     @Override
     public boolean disableMessage() {
-        return model.disableMessageBooleanProperty.get();
+        return model.disableMessageBooleanProperty().get();
     }
 
     @Override
     public BooleanProperty disableMessageBooleanProperty() {
-        return model.disableMessageBooleanProperty;
+        return model.disableMessageBooleanProperty();
     }
 
     @Override
     public void disableMessage(Boolean hideBanner) {
-        model.disableMessageBooleanProperty.set(hideBanner);
+        model.disableMessageBooleanProperty().set(hideBanner);
     }
 
     @Override
     public String getMessage() {
-        return model.labelStringProperty.get();
+        return model.labelStringProperty().get();
     }
 
     @Override
     public void setMessage(String labelText) {
-        model.labelStringProperty.set(labelText);
+        model.labelStringProperty().set(labelText);
     }
 
     @Override
     public ScaleType getScaleType() {
-        return model.scaleTypeProperty.get();
+        return model.scaleTypeProperty().get();
     }
 
     @Override
     public void setScaleType(ScaleType scale) {
-        model.scaleTypeProperty.set(scale);
+        model.scaleTypeProperty().set(scale);
     }
 
     @Override
     public void setIsInfoMessage(Boolean isInfoMessage) {
-        model.isInformationTypeBooleanProperty.set(isInfoMessage);
+        model.isInformationTypeBooleanProperty().set(isInfoMessage);
     }
 
     @Override
     public void setIsContrastScheme(Boolean isContrastTheme) {
-        model.isContrastThemeBooleanProperty.set(isContrastTheme);
+        model.isContrastThemeBooleanProperty().set(isContrastTheme);
     }
 
     /* Override Control methods */

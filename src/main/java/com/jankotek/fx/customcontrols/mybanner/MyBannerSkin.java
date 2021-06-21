@@ -31,10 +31,10 @@ public class MyBannerSkin extends SkinBase<MyBanner> {
 
         myBannerControl = getSkinnable();
         model = myBannerControl.getModel();
-        registerPseudoClass(model.scaleTypeProperty.get());
+        registerPseudoClass(model.scaleTypeProperty().get());
 
         view = new MyBannerView(MyBannerView.IconFactory.IconType.INFO);
-        view.labelStringProperty().setValue(model.labelStringProperty.getValue());
+        view.labelStringProperty().setValue(model.labelStringProperty().getValue());
         view.addOnExitEventListener(event -> {
             Node source = (Node) event.getSource();
             Parent parent = source.getParent();
@@ -47,11 +47,11 @@ public class MyBannerSkin extends SkinBase<MyBanner> {
     }
 
     private void registerViewListeners() {
-        model.disableMessageBooleanProperty.bind(view.disableMessageBooleanProperty());
+        model.disableMessageBooleanProperty().bind(view.disableMessageBooleanProperty());
     }
 
     private void registerControllerListener() {
-        model.scaleTypeProperty.addListener((observable, oldValue, newValue) -> {
+        model.scaleTypeProperty().addListener((observable, oldValue, newValue) -> {
                     unregisterPseudoClass(oldValue);
                     registerPseudoClass(newValue);
                 }

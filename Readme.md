@@ -1,10 +1,10 @@
 # My Custom banner
 
 ## Code challenge assignment
-[code challenge](doc/Testaufgabe.docx)
+[Testaufgabe.docx](doc/Testaufgabe.docx)
 
 ## MVC concept of the component
-![img](doc/img/Controll_Skin_MVC_pattern.png)
+![Controll_Skin_MVC_pattern.png](doc/img/Controll_Skin_MVC_pattern.png)
 
 ## How to run
 * Prerequisities - Java 11+
