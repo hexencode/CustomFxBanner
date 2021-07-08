@@ -91,25 +91,16 @@ class DemoControllerBoard extends VBox {
 
     static class MessageTypeSelector extends VBox {
 
-        private final ToggleGroup toggleGroup;
+        private final CheckBox isInfoMessage;
 
         public MessageTypeSelector() {
-            RadioButton isInfoRBtn = new RadioButton("info");
-            isInfoRBtn.setUserData(Boolean.TRUE);
-            RadioButton isConfirmRBtn = new RadioButton("success");
-            isInfoRBtn.setUserData(Boolean.FALSE);
+            isInfoMessage = new CheckBox("Info Message?");
 
-            toggleGroup = new ToggleGroup();
-            isInfoRBtn.setToggleGroup(toggleGroup);
-            isConfirmRBtn.setToggleGroup(toggleGroup);
-
-            isInfoRBtn.setSelected(true); // default value
-
-            super.getChildren().addAll(isInfoRBtn, isConfirmRBtn);
+            super.getChildren().addAll(isInfoMessage);
         }
 
         public boolean isInfoMessageSelected() {
-            return Boolean.TRUE == toggleGroup.getSelectedToggle().getUserData();
+            return isInfoMessage.isSelected();
         }
     }
 
@@ -150,8 +141,7 @@ class DemoControllerBoard extends VBox {
         }
 
         public MyBannerApi.ScaleType getSelectedScale() {
-            MyBannerApi.ScaleType userData = (MyBannerApi.ScaleType) toggleGroup.getSelectedToggle().getUserData();
-            return userData;
+            return (MyBannerApi.ScaleType) toggleGroup.getSelectedToggle().getUserData();
         }
 
         public void addScaleSelectionChangeListener(Consumer<MyBannerApi.ScaleType> scaleChangeListener) {

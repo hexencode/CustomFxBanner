@@ -1,18 +1,19 @@
 package com.jankotek.fx.customcontrols;
 
 import com.jankotek.fx.customcontrols.mybanner.MyBanner;
+import com.jankotek.fx.customcontrols.mybanner.MyBannerApi;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.logging.Logger;
+import java.util.function.Consumer;
 
 /**
  * Control panel for demonstration purposes. I did not focus on the code quality in this class as it serves only to demoing.
  */
 public class DemoApp extends Application {
 
-    private final static Logger LOGGER = Logger.getLogger(DemoApp.class.getName());
+    private DemoBannerBoard bannerBoard;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -26,10 +27,8 @@ public class DemoApp extends Application {
         Stage secondaryStage = new Stage();
 
         DemoControllerBoard controlBoard = new DemoControllerBoard();
-        DemoBannerBoard bannerBoard = new DemoBannerBoard(secondaryStage);
+        bannerBoard = new DemoBannerBoard(secondaryStage);
 
-        // ... default theme otherwise. TODO replace with enum
-        // ... success message otherwise. TODO replace with enum
         controlBoard.addOnCreateButtonPressedEventListener(
                 event -> {
                     MyBanner newBanner = new MyBanner();
@@ -43,11 +42,26 @@ public class DemoApp extends Application {
                 }
         );
 
-        controlBoard.addScaleChangeListener(bannerBoard.addOnScaleSelectionChangeListener());
-        controlBoard.addThemeChangeListener(bannerBoard.addOnThemeSelectionChangeListener());
+        controlBoard.addScaleChangeListener(addOnScaleSelectionChangeListener());
+        controlBoard.addThemeChangeListener(addOnThemeSelectionChangeListener());
 
         Scene scene = new Scene(controlBoard, 400, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    Consumer<MyBannerApi.ScaleType> addOnScaleSelectionChangeListener() {
+        return (MyBannerApi.ScaleType newScaleSelection) -> bannerBoard.getBanners()
+                .stream()
+                .filter(node -> node instanceof MyBanner)
+                .forEach(myBanner -> ((MyBanner) myBanner).setScaleType(newScaleSelection));
+    }
+
+    Consumer<Boolean> addOnThemeSelectionChangeListener() {
+        return isContrastThemeSelected -> {
+            bannerBoard.getBanners().stream()
+                    .filter(node -> node instanceof MyBanner)
+                    .forEach(myBannerApi -> ((MyBanner) myBannerApi).setIsContrastScheme(isContrastThemeSelected));
+        };
     }
 }

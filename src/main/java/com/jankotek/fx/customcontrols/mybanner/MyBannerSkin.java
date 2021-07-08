@@ -8,7 +8,7 @@ import javafx.scene.control.SkinBase;
 
 import java.util.Map;
 
-public class MyBannerSkin extends SkinBase<MyBanner> {
+class MyBannerSkin extends SkinBase<MyBanner> {
 
     private final MyBannerView view;
     private final MyBannerModel model;
@@ -28,13 +28,13 @@ public class MyBannerSkin extends SkinBase<MyBanner> {
         pseudoClassStateChanged(CssPseudoClassFactory.getScalePseudoClass(model.scaleTypeProperty().get()), true);
         pseudoClassStateChanged(CssPseudoClassFactory.getThemePseudoClass(model.isContrastThemeBooleanProperty().getValue()), true);
 
-        view = new MyBannerView(MyBannerView.IconFactory.IconType.INFO);
+        MyBannerView.IconFactory.IconType messageType = model.isInformationTypeBooleanProperty().get()
+                ? MyBannerView.IconFactory.IconType.INFO
+                : MyBannerView.IconFactory.IconType.CONFIRM;
+
+        view = new MyBannerView(messageType);
         view.labelStringProperty().setValue(model.labelStringProperty().getValue());
-        view.addOnExitEventListener(event -> {
-            Node source = (Node) event.getSource();
-            Parent parent = source.getParent();
-            getChildren().removeAll(parent);
-        });
+
         getChildren().add(view.getRoot());
 
         registerViewListeners();
@@ -43,6 +43,12 @@ public class MyBannerSkin extends SkinBase<MyBanner> {
 
     private void registerViewListeners() {
         model.disableMessageBooleanProperty().bind(view.disableMessageBooleanProperty());
+
+        view.addOnExitEventListener(event -> {
+            Node source = (Node) event.getSource();
+            Parent parent = source.getParent();
+            getChildren().removeAll(parent);
+        });
     }
 
     private void registerControllerListener() {

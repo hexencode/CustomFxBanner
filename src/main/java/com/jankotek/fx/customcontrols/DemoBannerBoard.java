@@ -1,26 +1,24 @@
 package com.jankotek.fx.customcontrols;
 
 import com.jankotek.fx.customcontrols.mybanner.MyBanner;
-import com.jankotek.fx.customcontrols.mybanner.MyBannerApi;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-
 class DemoBannerBoard extends VBox {
 
-    private final List<MyBannerApi> displayedBanners = new ArrayList<>();
     private final Stage stage;
+    private final ObservableList<Node> banners;
 
     public DemoBannerBoard(Stage stage) {
         this.stage = stage;
-        Scene scene = new Scene(this, 1100, 500);
+        Scene scene = new Scene(this, 900, 400);
         this.stage.setScene(scene);
         this.stage.setX(this.stage.getX() + 300);
+        banners = this.getChildren();
     }
 
     public void addBanner(MyBanner newBanner) {
@@ -31,19 +29,10 @@ class DemoBannerBoard extends VBox {
         super.fillWidthProperty();
         super.setSpacing(20);
         super.setAlignment(Pos.CENTER);
-        super.getChildren().add(newBanner);
-        displayedBanners.add(newBanner);
+        banners.add(newBanner);
     }
 
-    Consumer<MyBannerApi.ScaleType> addOnScaleSelectionChangeListener() {
-        return (MyBannerApi.ScaleType newScaleSelection) -> displayedBanners.forEach(
-                myBanner -> myBanner.setScaleType(newScaleSelection)
-        );
-    }
-
-    Consumer<Boolean> addOnThemeSelectionChangeListener() {
-        return isContrastThemeSelected -> {
-            displayedBanners.forEach(myBannerApi -> myBannerApi.setIsContrastScheme(isContrastThemeSelected));
-        };
+    public ObservableList<Node> getBanners() {
+        return banners;
     }
 }
